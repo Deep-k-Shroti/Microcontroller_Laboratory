@@ -1,0 +1,201 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/12/2015  16:00:00  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE motor.obj TO motor
+
+
+INPUT MODULES INCLUDED:
+  motor.obj (MOTOR)
+
+
+LINK MAP OF MODULE:  motor (MOTOR)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     FFF3H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  motor (MOTOR)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        MOTOR
+  C:81E6H         SYMBOL        AGAIN3
+  C:81DEH         SYMBOL        DELAY
+  C:81E0H         SYMBOL        DELAY1
+  D:00A8H         SYMBOL        IE
+  C:8308H         SYMBOL        JMP1
+  C:8312H         SYMBOL        JMP2
+  C:817BH         SYMBOL        JMP3
+  C:811BH         SYMBOL        LOOP
+  D:0090H         SYMBOL        P1
+  D:0088H         SYMBOL        TCON
+  B:0088H.7       SYMBOL        TF1
+  D:008DH         SYMBOL        TH1
+  D:008BH         SYMBOL        TL1
+  D:0089H         SYMBOL        TMOD
+  B:0088H.6       SYMBOL        TR1
+  C:8100H         LINE#         3
+  C:8103H         LINE#         4
+  C:8106H         LINE#         5
+  C:8108H         LINE#         7
+  C:810AH         LINE#         8
+  C:810CH         LINE#         9
+  C:810FH         LINE#         12
+  C:8112H         LINE#         13
+  C:8114H         LINE#         14
+  C:8115H         LINE#         16
+  C:8118H         LINE#         17
+  C:811AH         LINE#         18
+  C:811BH         LINE#         22
+  C:811DH         LINE#         23
+  C:811EH         LINE#         24
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2015  16:00:00  PAGE 2
+
+
+  C:8120H         LINE#         25
+  C:8122H         LINE#         26
+  C:8124H         LINE#         27
+  C:8126H         LINE#         28
+  C:8128H         LINE#         29
+  C:812AH         LINE#         30
+  C:812CH         LINE#         31
+  C:812EH         LINE#         33
+  C:8130H         LINE#         34
+  C:8131H         LINE#         35
+  C:8133H         LINE#         36
+  C:8135H         LINE#         37
+  C:8137H         LINE#         38
+  C:8139H         LINE#         39
+  C:813BH         LINE#         40
+  C:813DH         LINE#         41
+  C:813FH         LINE#         43
+  C:8141H         LINE#         44
+  C:8142H         LINE#         45
+  C:8144H         LINE#         46
+  C:8146H         LINE#         47
+  C:8148H         LINE#         48
+  C:814AH         LINE#         49
+  C:814CH         LINE#         50
+  C:814EH         LINE#         52
+  C:8150H         LINE#         53
+  C:8151H         LINE#         54
+  C:8153H         LINE#         55
+  C:8155H         LINE#         56
+  C:8157H         LINE#         57
+  C:8159H         LINE#         58
+  C:815BH         LINE#         60
+  C:815DH         LINE#         61
+  C:815EH         LINE#         62
+  C:8160H         LINE#         63
+  C:8162H         LINE#         64
+  C:8164H         LINE#         65
+  C:8166H         LINE#         67
+  C:8168H         LINE#         68
+  C:8169H         LINE#         69
+  C:816BH         LINE#         70
+  C:816DH         LINE#         71
+  C:816FH         LINE#         73
+  C:8171H         LINE#         74
+  C:8172H         LINE#         75
+  C:8174H         LINE#         76
+  C:8176H         LINE#         78
+  C:8178H         LINE#         79
+  C:8179H         LINE#         80
+  C:817BH         LINE#         83
+  C:817DH         LINE#         84
+  C:817EH         LINE#         85
+  C:8180H         LINE#         87
+  C:8182H         LINE#         88
+  C:8183H         LINE#         89
+  C:8185H         LINE#         90
+  C:8187H         LINE#         93
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2015  16:00:00  PAGE 3
+
+
+  C:8189H         LINE#         94
+  C:818AH         LINE#         95
+  C:818CH         LINE#         96
+  C:818EH         LINE#         97
+  C:8190H         LINE#         99
+  C:8192H         LINE#         100
+  C:8193H         LINE#         101
+  C:8195H         LINE#         102
+  C:8197H         LINE#         103
+  C:8199H         LINE#         104
+  C:819BH         LINE#         106
+  C:819DH         LINE#         107
+  C:819EH         LINE#         108
+  C:81A0H         LINE#         109
+  C:81A2H         LINE#         110
+  C:81A4H         LINE#         111
+  C:81A6H         LINE#         112
+  C:81A8H         LINE#         114
+  C:81AAH         LINE#         115
+  C:81ABH         LINE#         116
+  C:81ADH         LINE#         117
+  C:81AFH         LINE#         118
+  C:81B1H         LINE#         119
+  C:81B3H         LINE#         120
+  C:81B5H         LINE#         121
+  C:81B7H         LINE#         123
+  C:81B9H         LINE#         124
+  C:81BAH         LINE#         125
+  C:81BCH         LINE#         126
+  C:81BEH         LINE#         127
+  C:81C0H         LINE#         128
+  C:81C2H         LINE#         129
+  C:81C4H         LINE#         130
+  C:81C6H         LINE#         131
+  C:81C8H         LINE#         133
+  C:81CAH         LINE#         134
+  C:81CBH         LINE#         135
+  C:81CDH         LINE#         136
+  C:81CFH         LINE#         137
+  C:81D1H         LINE#         138
+  C:81D3H         LINE#         139
+  C:81D5H         LINE#         140
+  C:81D7H         LINE#         141
+  C:81D9H         LINE#         142
+  C:81DBH         LINE#         146
+  C:81DEH         LINE#         149
+  C:81E0H         LINE#         150
+  C:81E2H         LINE#         151
+  C:81E4H         LINE#         152
+  C:81E6H         LINE#         154
+  C:81E9H         LINE#         155
+  C:81EBH         LINE#         156
+  C:81EDH         LINE#         158
+  C:81EFH         LINE#         159
+  C:8300H         LINE#         163
+  C:8302H         LINE#         164
+  C:8303H         LINE#         165
+BL51 BANKED LINKER/LOCATER V6.22                                                      10/12/2015  16:00:00  PAGE 4
+
+
+  C:8304H         LINE#         166
+  C:8306H         LINE#         167
+  C:8308H         LINE#         170
+  C:830AH         LINE#         171
+  C:830BH         LINE#         172
+  C:830CH         LINE#         173
+  C:830EH         LINE#         174
+  C:8310H         LINE#         175
+  C:8312H         LINE#         176
+  -------         ENDMOD        MOTOR
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0103H BYTE (12%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=65523
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

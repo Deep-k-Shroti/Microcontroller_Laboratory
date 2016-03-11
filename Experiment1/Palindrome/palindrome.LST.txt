@@ -1,0 +1,95 @@
+A51 MACRO ASSEMBLER  PALINDROME                                                           07/27/2015 15:05:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN palindrome.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE palindrome.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1             ORG 8100H
+                       2             
+8100 909000            3             MOV DPTR, #9000H
+8103 7401              4             MOV A,#01H
+8105 F0                5             MOVX @DPTR,A
+8106 A3                6             INC DPTR
+8107 7402              7             MOV A,#02H
+8109 F0                8             MOVX @DPTR,A
+810A A3                9             INC DPTR
+810B 7403             10             MOV A,#03H
+810D F0               11             MOVX @DPTR,A
+810E A3               12             INC DPTR
+810F 7402             13             MOV A,#02H
+8111 F0               14             MOVX @DPTR,A
+8112 A3               15             INC DPTR
+8113 7401             16             MOV A,#01H
+8115 F0               17             MOVX @DPTR,A
+8116 A3               18             INC DPTR
+8117 7400             19             MOV A,#00H
+8119 F0               20             MOVX @DPTR,A
+                      21             
+                      22             
+811A 908FFF           23             MOV DPTR, #8FFFH
+811D A3               24     FOUND: INC DPTR
+811E E0               25             MOVX A, @DPTR
+811F B400FB           26             CJNE A,#00H,FOUND
+8122 AD82             27             MOV R5, DPL
+8124 AE83             28             MOV R6, DPH
+8126 1D               29             DEC R5
+8127 7C90             30             MOV R4, #90H
+8129 7B00             31             MOV R3, #00H
+                      32             
+812B 8C83             33     COMP: MOV DPH,R4
+812D 8B82             34             MOV DPL,R3
+812F E0               35             MOVX A, @DPTR
+8130 F9               36             MOV R1,A
+                      37             
+8131 8E83             38             MOV DPH, R6
+8133 8D82             39             MOV DPL, R5
+8135 E0               40             MOVX A, @DPTR
+8136 FA               41             MOV R2,A
+                      42             
+8137 EA               43             MOV A, R2
+8138 B5010E           44             CJNE A,1,OUT
+813B 0B               45             INC R3
+813C 1D               46             DEC R5
+813D ED               47             MOV A, R5
+813E B400EA           48             CJNE A, #00, COMP
+8141 909500           49             MOV DPTR,#9500H
+8144 7401             50             MOV A, #1
+8146 F0               51             MOVX @DPTR, A
+8147 8006             52             SJMP NEXT
+                      53             
+8149 909500           54     OUT:MOV DPTR,#9500H
+814C 7400             55             MOV A,#0
+814E F0               56             MOVX @DPTR,A
+                      57             
+814F 80FE             58     NEXT: SJMP NEXT
+A51 MACRO ASSEMBLER  PALINDROME                                                           07/27/2015 15:05:37 PAGE     2
+
+                      59             END
+                                     
+                             
+                             
+                                     
+                                     
+A51 MACRO ASSEMBLER  PALINDROME                                                           07/27/2015 15:05:37 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+COMP . . . . . . .  C ADDR   812BH   A   
+DPH. . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . .  D ADDR   0082H   A   
+FOUND. . . . . . .  C ADDR   811DH   A   
+NEXT . . . . . . .  C ADDR   814FH   A   
+OUT. . . . . . . .  C ADDR   8149H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

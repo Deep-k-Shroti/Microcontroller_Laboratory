@@ -1,0 +1,224 @@
+A51 MACRO ASSEMBLER  MOTOR                                                                10/12/2015 16:00:00 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN motor.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE motor.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1     ORG 8100H
+                       2        
+8100 758910            3         MOV TMOD,#10H
+8103 75A884            4         MOV IE,#84H
+8106 D28A              5         SETB TCON.2
+                       6        
+8108 7A00              7         MOV R2,#0
+810A 7B00              8         MOV R3,#0
+810C 759000            9         MOV P1,#00H
+                      10        
+                      11       
+810F 90E803           12         MOV DPTR,#0E803H
+8112 7483             13         MOV A,#83H
+8114 F0               14         MOVX @DPTR,A
+                      15        
+8115 90E800           16         MOV DPTR,#0E800H
+8118 7400             17         MOV A,#00H
+811A F0               18         MOVX @DPTR,A
+                      19        
+811B                  20     LOOP:   
+                      21          
+811B 7408             22             MOV A,#08
+811D F0               23         MOVX @DPTR,A 
+811E 31DE             24         ACALL DELAY
+8120 31DE             25             ACALL DELAY
+8122 31DE             26         ACALL DELAY
+8124 31DE             27             ACALL DELAY
+8126 31DE             28             ACALL DELAY
+8128 31DE             29         ACALL DELAY 
+812A 31DE             30             ACALL DELAY 
+812C 31DE             31             ACALL DELAY
+                      32             
+812E 7404             33         MOV A,#04
+8130 F0               34         MOVX @DPTR,A
+8131 31DE             35              ACALL DELAY
+8133 31DE             36         ACALL DELAY
+8135 31DE             37             ACALL DELAY
+8137 31DE             38             ACALL DELAY
+8139 31DE             39         ACALL DELAY 
+813B 31DE             40             ACALL DELAY 
+813D 31DE             41               ACALL DELAY
+                      42               
+813F 7402             43         MOV A,#02
+8141 F0               44         MOVX @DPTR,A
+8142 31DE             45         ACALL DELAY
+8144 31DE             46             ACALL DELAY
+8146 31DE             47         ACALL DELAY 
+8148 31DE             48             ACALL DELAY 
+814A 31DE             49             ACALL DELAY
+814C 31DE             50              ACALL DELAY
+                      51                
+814E 7401             52               MOV A,#01
+8150 F0               53         MOVX @DPTR,A
+8151 31DE             54         ACALL DELAY
+8153 31DE             55             ACALL DELAY
+8155 31DE             56         ACALL DELAY 
+8157 31DE             57             ACALL DELAY 
+8159 31DE             58              ACALL DELAY
+A51 MACRO ASSEMBLER  MOTOR                                                                10/12/2015 16:00:00 PAGE     2
+
+                      59             
+815B 7408             60             MOV A,#08
+815D F0               61         MOVX @DPTR,A
+815E 31DE             62         ACALL DELAY
+8160 31DE             63         ACALL DELAY 
+8162 31DE             64             ACALL DELAY 
+8164 31DE             65              ACALL DELAY
+                      66             
+8166 7404             67         MOV A,#04
+8168 F0               68         MOVX @DPTR,A
+8169 31DE             69         ACALL DELAY
+816B 31DE             70         ACALL DELAY
+816D 31DE             71              ACALL DELAY
+                      72              
+816F 7402             73         MOV A,#02
+8171 F0               74         MOVX @DPTR,A
+8172 31DE             75         ACALL DELAY
+8174 31DE             76              ACALL DELAY
+                      77              
+8176 7401             78         MOV A,#01
+8178 F0               79         MOVX @DPTR,A
+8179 31DE             80         ACALL DELAY
+                      81        
+817B                  82     JMP3:    
+817B 7401             83             MOV A,#01
+817D F0               84         MOVX @DPTR,A
+817E 31DE             85         ACALL DELAY
+                      86       
+8180 7402             87         MOV A,#02
+8182 F0               88         MOVX @DPTR,A
+8183 31DE             89         ACALL DELAY
+8185 31DE             90             ACALL DELAY
+                      91       
+                      92       
+8187 7404             93         MOV A,#04
+8189 F0               94         MOVX @DPTR,A
+818A 31DE             95         ACALL DELAY
+818C 31DE             96               ACALL DELAY
+818E 31DE             97             ACALL DELAY
+                      98        
+8190 7408             99         MOV A,#08
+8192 F0              100         MOVX @DPTR,A
+8193 31DE            101         ACALL DELAY
+8195 31DE            102              ACALL DELAY
+8197 31DE            103               ACALL DELAY
+8199 31DE            104             ACALL DELAY
+                     105        
+819B 7401            106         MOV A,#01
+819D F0              107         MOVX @DPTR,A
+819E 31DE            108         ACALL DELAY
+81A0 31DE            109             ACALL DELAY
+81A2 31DE            110              ACALL DELAY
+81A4 31DE            111               ACALL DELAY
+81A6 31DE            112             ACALL DELAY
+                     113       
+81A8 7402            114         MOV A,#02
+81AA F0              115         MOVX @DPTR,A
+81AB 31DE            116         ACALL DELAY
+81AD 31DE            117              ACALL DELAY
+81AF 31DE            118             ACALL DELAY
+81B1 31DE            119              ACALL DELAY
+81B3 31DE            120               ACALL DELAY
+81B5 31DE            121             ACALL DELAY
+                     122       
+81B7 7404            123         MOV A,#04
+81B9 F0              124         MOVX @DPTR,A
+A51 MACRO ASSEMBLER  MOTOR                                                                10/12/2015 16:00:00 PAGE     3
+
+81BA 31DE            125         ACALL DELAY
+81BC 31DE            126             ACALL DELAY
+81BE 31DE            127              ACALL DELAY
+81C0 31DE            128             ACALL DELAY
+81C2 31DE            129              ACALL DELAY
+81C4 31DE            130               ACALL DELAY
+81C6 31DE            131             ACALL DELAY
+                     132        
+81C8 7408            133         MOV A,#08
+81CA F0              134         MOVX @DPTR,A
+81CB 31DE            135         ACALL DELAY
+81CD 31DE            136             ACALL DELAY
+81CF 31DE            137             ACALL DELAY
+81D1 31DE            138              ACALL DELAY
+81D3 31DE            139             ACALL DELAY
+81D5 31DE            140              ACALL DELAY
+81D7 31DE            141               ACALL DELAY
+81D9 31DE            142             ACALL DELAY
+                     143     
+                     144      
+                     145       
+81DB 02811B          146         LJMP LOOP
+                     147        
+81DE                 148     DELAY:  
+81DE 7D06            149                 MOV R5,#6
+81E0 8B8D            150     DELAY1: MOV TH1,R3             
+81E2 8A8B            151             MOV TL1,R2
+81E4 D28E            152             SETB TR1
+                     153                     
+81E6 308FFD          154     AGAIN3: JNB TF1,AGAIN3
+81E9 C28E            155             CLR TR1
+81EB C28F            156             CLR TF1
+                     157                     
+81ED DDF1            158                     DJNZ R5,DELAY1
+81EF 22              159             RET
+                     160           
+                     161               
+8300                 162         ORG 8300H
+8300 7400            163         MOV A,#00H
+8302 2A              164         ADD A, R2
+8303 FA              165         MOV R2,A
+8304 5002            166         JNC JMP1
+8306 741E            167         MOV A,#1EH
+                     168             
+8308                 169     JMP1: 
+8308 741D            170              MOV A,#1DH
+830A 2B              171          ADD A,R3
+830B FB              172          MOV R3,A
+830C 5004            173          JNC JMP2
+830E 7B00            174          MOV R3,#0
+8310 7A00            175          MOV R2,#0
+8312 32              176     JMP2:RETI
+                     177            
+FFF3                 178         ORG 0FFF3H
+                     179        ;LJMP 8300H
+                     180            
+                     181                
+                     182             END
+A51 MACRO ASSEMBLER  MOTOR                                                                10/12/2015 16:00:00 PAGE     4
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN3 . . . . . .  C ADDR   81E6H   A   
+DELAY. . . . . . .  C ADDR   81DEH   A   
+DELAY1 . . . . . .  C ADDR   81E0H   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+JMP1 . . . . . . .  C ADDR   8308H   A   
+JMP2 . . . . . . .  C ADDR   8312H   A   
+JMP3 . . . . . . .  C ADDR   817BH   A   
+LOOP . . . . . . .  C ADDR   811BH   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

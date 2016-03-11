@@ -1,0 +1,104 @@
+A51 MACRO ASSEMBLER  ADC                                                                  09/28/2015 16:16:48 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN Adc.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE Adc.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+8100                   2             ORG 8100H   
+                       3            
+                       4            
+8100 758910            5             MOV TMOD,#10H
+                       6            
+8103 90E803            7             MOV DPTR,#0E803H        
+8106 7483              8             MOV A,#83H
+8108 F0                9             MOVX @DPTR,A
+                      10            
+8109 90E801           11             MOV DPTR,#0E801H        
+810C 74FF             12             MOV A,#0FFH
+810E F0               13             MOVX @DPTR,A
+                      14     
+810F 90E802           15     L2:        MOV DPTR,#0E802H        
+8112 74FF             16             MOV A,#0FFH
+8114 F0               17             MOVX @DPTR,A
+                      18            
+8115 90E802           19             MOV DPTR,#0E802H        
+8118 E0               20             MOVX A,@DPTR
+8119 54EF             21             ANL A,#0EFH
+811B F0               22             MOVX @DPTR,A
+                      23            
+                      24            
+811C 90E802           25     L1:        MOV DPTR,#0E802H        
+811F E0               26             MOVX A,@DPTR
+8120 5402             27             ANL A,#02H
+8122 70F8             28             JNZ L1
+                      29            
+                      30             ;MOV DPTR,#0E802H       // OUTPUT ENABLE
+                      31             ;MOVX A,@DPTR
+                      32             ;ANL A,#0DFH
+                      33             ;MOVX @DPTR,A
+                      34            
+8124 90E801           35             MOV DPTR,#0E801H        
+8127 E0               36             MOVX A,@DPTR
+8128 FF               37             MOV R7,A
+                      38            
+8129 B49600           39             CJNE A,#150,JMP1
+812C 4009             40     JMP1:    JC JMP2
+812E 90E802           41             MOV DPTR,#0E802H        
+8131 E0               42             MOVX A,@DPTR
+8132 54BF             43             ANL A, #0BFH
+8134 F0               44             MOVX @DPTR,A
+8135 8007             45             SJMP JMP3
+                      46            
+8137 90E802           47     JMP2:    MOV DPTR,#0E802H
+813A E0               48             MOVX A,@DPTR             
+813B 4440             49             ORL A, #40H
+813D F0               50             MOVX @DPTR,A
+                      51            
+813E 90E800           52     JMP3:    MOV DPTR,#0E800H        
+8141 EF               53             MOV A,R7
+8142 F0               54             MOVX @DPTR,A
+                      55            
+8143 3147             56             ACALL DELAY
+8145 80C8             57             SJMP L2
+                      58            
+A51 MACRO ASSEMBLER  ADC                                                                  09/28/2015 16:16:48 PAGE     2
+
+8147 758D00           59     DELAY:    MOV TH1,#00H             
+814A 758B00           60             MOV TL1,#00H
+814D D28E             61             SETB TR1
+814F 308FFD           62     AGAIN3:    JNB TF1,AGAIN3
+8152 C28E             63             CLR TR1
+8154 C28F             64             CLR TF1
+8156 22               65             RET
+                      66            
+                      67             END
+A51 MACRO ASSEMBLER  ADC                                                                  09/28/2015 16:16:48 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN3 . . . . . .  C ADDR   814FH   A   
+DELAY. . . . . . .  C ADDR   8147H   A   
+JMP1 . . . . . . .  C ADDR   812CH   A   
+JMP2 . . . . . . .  C ADDR   8137H   A   
+JMP3 . . . . . . .  C ADDR   813EH   A   
+L1 . . . . . . . .  C ADDR   811CH   A   
+L2 . . . . . . . .  C ADDR   810FH   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

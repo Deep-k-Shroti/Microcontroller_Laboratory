@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  LCM                                                                  07/27/2015 14:25:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN lcm.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE lcm.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1     ORG 8100H
+8100 909000            2             MOV DPTR, #9000H
+8103 7415              3             MOV A, #21
+8105 7F00              4             MOV R7,#0
+8107 F0                5             MOVX @DPTR, A
+8108 E0                6             MOVX A,@DPTR
+8109 FC                7             MOV R4,A
+810A A3                8             INC DPTR
+810B 7406              9             MOV A, #06
+810D F0               10             MOVX @DPTR, A
+810E E0               11             MOVX A,@DPTR
+810F FD               12             MOV R5,A
+8110 7A00             13             MOV R2, #00H
+8112 7900             14             MOV R1,#00H
+8114 09               15     REP:INC R1
+8115 89F0             16             MOV B, R1
+8117 EC               17             MOV A, R4
+8118 A4               18             MUL AB
+8119 FA               19             MOV R2, A
+811A 8DF0             20             MOV B, R5
+811C 84               21             DIV AB
+811D E5F0             22             MOV A,B
+811F B507F2           23             CJNE A,7,REP
+                      24             
+8122 A3               25             INC DPTR
+8123 EA               26             MOV A,R2
+8124 F0               27             MOVX @DPTR, A
+                      28             
+8125 80FE             29     HERE:SJMP HERE
+                      30             END
+                                     
+A51 MACRO ASSEMBLER  LCM                                                                  07/27/2015 14:25:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+B. . . . . . . . .  D ADDR   00F0H   A   
+HERE . . . . . . .  C ADDR   8125H   A   
+REP. . . . . . . .  C ADDR   8114H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

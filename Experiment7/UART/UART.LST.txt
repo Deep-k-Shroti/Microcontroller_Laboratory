@@ -1,0 +1,41 @@
+A51 MACRO ASSEMBLER  UART                                                                 10/26/2015 14:26:34 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN UART.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE UART.a51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1     ORG 8100H
+8100 758920            2     MOV TMOD,#20H ; the timer mode :timer 1,mode 2(auto reload)
+8103 758DFD            3     MOV TH1,#-3 ; baud rate = 9600 bps
+8106 759850            4     MOV SCON,#50H ;8-bit, 1 stop, Receiver interrupt enabled
+8109 D28E              5     SETB TR1 ;start timer 1
+810B 3098FD            6     HERE: JNB RI,HERE ;wait until value is received
+810E E599              7     MOV A,SBUF ;save received value in A
+8110 909001            8     MOV DPTR, #9001H
+8113 F0                9     MOVX @DPTR,A ;send value to memory
+8114 80F5             10     SJMP HERE ;continue receiving data
+                      11     END
+A51 MACRO ASSEMBLER  UART                                                                 10/26/2015 14:26:34 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+HERE . . . . . . .  C ADDR   810BH   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

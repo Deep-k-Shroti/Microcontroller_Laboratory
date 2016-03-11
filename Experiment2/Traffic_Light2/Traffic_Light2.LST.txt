@@ -1,0 +1,135 @@
+A51 MACRO ASSEMBLER  TRAFFIC_LIGHT2                                                       08/10/2015 14:19:37 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN Traffic_Light2.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE Traffic_Light2.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1        ;ORG 0FFF3H
+                       2         ;LJMP TODO
+8300                   3         ORG 8300H
+                       4         
+8300 8590F0            5         MOV B,P1
+8303 7590FF            6         MOV P1,#0FFH
+8306 E590              7     BLNK:MOV A,P1
+8308 128200            8         LCALL DELAY_RTN
+830B F4                9         CPL A
+830C F590             10         MOV P1,A
+830E 30B3F5           11         JNB P3.3,BLNK
+8311 E5F0             12         MOV A,B
+8313 F590             13         MOV P1,A
+8315 22               14         RET
+                      15         
+8200                  16         ORG 8200H
+8200 7802             17     DELAY_RTN:MOV R0,#02
+8202 7EFA             18     DELAY_R:MOV R6,#250
+8204 758AFF           19     CONT:MOV TL0,#0FFH
+8207 758CDB           20         MOV TH0,#0DBH
+820A D28C             21         SETB TR0
+820C 308DFD           22     HERE:JNB TF0,HERE
+820F C28C             23         CLR TR0
+8211 C28D             24         CLR TF0
+8213 DEEF             25         DJNZ R6,CONT
+8215 D8EB             26         DJNZ R0,DELAY_R
+8217 22               27         RET
+                      28         
+8100                  29         ORG 8100H
+8100 759000           30         MOV P1,#00H
+8103 758901           31         MOV TMOD,#01
+8106 75A885           32         MOV IE,#85H
+8109 75B0FF           33         MOV P3,#0FFH
+810C 759000           34     LIGHT:MOV P1,#00H
+                      35     
+810F 7D0C             36     RED:MOV R5,#0CH
+8111 D295             37         SETB P1.5
+8113 E5A0             38     GOR:MOV A,P2
+8115 209005           39     BLNKR:JB P1.0,NEXTR
+8118 128306           40         LCALL BLNK
+811B 80F8             41         SJMP BLNKR
+811D 5100             42     NEXTR:ACALL DELAY_RTN
+811F DDF2             43         DJNZ R5,GOR
+8121 C295             44         CLR P1.5
+                      45         
+8123 7C03             46     YELLOW:MOV R4,#03H
+8125 D294             47         SETB P1.4
+8127 E5A0             48     GOY:MOV A,P2
+8129 209005           49     BLNKY:JB P1.0,NEXTY
+812C 128306           50         LCALL BLNK
+812F 80F8             51         SJMP BLNKY
+8131 5100             52     NEXTY:ACALL DELAY_RTN
+8133 DCF2             53         DJNZ R4,GOY
+8135 C294             54         CLR P1.4
+                      55         
+8137 7B0C             56     GREEN:MOV R3,#0CH
+8139 D293             57         SETB P1.3
+813B E5A0             58     GOG:MOV A,P2
+A51 MACRO ASSEMBLER  TRAFFIC_LIGHT2                                                       08/10/2015 14:19:37 PAGE     2
+
+813D 209005           59     BLNKG:JB P1.0,NEXTG
+8140 128306           60         LCALL BLNK
+8143 80F8             61         SJMP BLNKG
+8145 5100             62     NEXTG:ACALL DELAY_RTN
+8147 DBF2             63         DJNZ R3,GOG
+8149 C293             64         CLR P1.3
+                      65         
+814B 7A02             66     ADV_GR:MOV R2,#02H
+814D D292             67         SETB P1.2
+814F E5A0             68     GOA:MOV A,P2
+8151 209005           69     BLNKA:JB P1.0,NEXTA
+8154 128306           70         LCALL BLNK
+8157 80F8             71         SJMP BLNKA
+8159 5100             72     NEXTA:ACALL DELAY_RTN
+815B DAF2             73         DJNZ R2,GOA
+815D C292             74         CLR P1.2
+                      75         
+815F 80AB             76         SJMP LIGHT
+                      77         
+                      78         END
+A51 MACRO ASSEMBLER  TRAFFIC_LIGHT2                                                       08/10/2015 14:19:37 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADV_GR . . . . . .  C ADDR   814BH   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+BLNK . . . . . . .  C ADDR   8306H   A   
+BLNKA. . . . . . .  C ADDR   8151H   A   
+BLNKG. . . . . . .  C ADDR   813DH   A   
+BLNKR. . . . . . .  C ADDR   8115H   A   
+BLNKY. . . . . . .  C ADDR   8129H   A   
+CONT . . . . . . .  C ADDR   8204H   A   
+DELAY_R. . . . . .  C ADDR   8202H   A   
+DELAY_RTN. . . . .  C ADDR   8200H   A   
+GOA. . . . . . . .  C ADDR   814FH   A   
+GOG. . . . . . . .  C ADDR   813BH   A   
+GOR. . . . . . . .  C ADDR   8113H   A   
+GOY. . . . . . . .  C ADDR   8127H   A   
+GREEN. . . . . . .  C ADDR   8137H   A   
+HERE . . . . . . .  C ADDR   820CH   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+LIGHT. . . . . . .  C ADDR   810CH   A   
+NEXTA. . . . . . .  C ADDR   8159H   A   
+NEXTG. . . . . . .  C ADDR   8145H   A   
+NEXTR. . . . . . .  C ADDR   811DH   A   
+NEXTY. . . . . . .  C ADDR   8131H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . .  D ADDR   00B0H   A   
+RED. . . . . . . .  C ADDR   810FH   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+YELLOW . . . . . .  C ADDR   8123H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

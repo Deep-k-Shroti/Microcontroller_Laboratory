@@ -1,0 +1,91 @@
+A51 MACRO ASSEMBLER  TRAFFIC_LIGHT                                                        08/03/2015 14:38:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN Traffic_Light.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE Traffic_Light.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+8200                   2             ORG 8200H
+8200 7802              3     DELAY_RTN:MOV R0,#02
+8202 7EFA              4     DELAY_R:MOV R6,#250
+8204 758AFF            5     CONT:MOV TL0,#0FFH
+8207 758CDB            6             MOV TH0,#0DBH
+820A D28C              7             SETB TR0
+820C 308DFD            8     HERE:JNB TF0,HERE
+820F C28C              9             CLR TR0
+8211 C28D             10             CLR TF0
+8213 DEEF             11             DJNZ R6,CONT
+8215 D8EB             12             DJNZ R0,DELAY_R
+8217 22               13             RET
+                      14             
+8100                  15             ORG 8100H
+8100 759000           16             MOV P1,#00H
+8103 758901           17             MOV TMOD,#01
+8106 759000           18     LIGHT:MOV P1,#00H
+                      19     
+8109 7D0C             20     RED:MOV R5,#0CH
+810B D295             21             SETB P1.5
+810D 5100             22     GOR:ACALL DELAY_RTN
+810F DDFC             23             DJNZ R5,GOR
+8111 C295             24             CLR P1.5
+                      25             
+8113 7C03             26     YELLOW:MOV R4,#03H
+8115 D294             27             SETB P1.4
+8117 5100             28     GOY:ACALL DELAY_RTN
+8119 DCFC             29             DJNZ R4,GOY
+811B C294             30             CLR P1.4
+                      31             
+811D 7B0C             32     GREEN:MOV R3,#0CH
+811F D293             33             SETB P1.3
+8121 5100             34     GOG:ACALL DELAY_RTN
+8123 DBFC             35             DJNZ R3,GOG
+8125 C293             36             CLR P1.3
+                      37             
+8127 7A02             38     ADV_GR:MOV R2,#02H
+8129 D292             39             SETB P1.2
+812B 5100             40     GOA:ACALL DELAY_RTN
+812D DAFC             41             DJNZ R2,GOA
+812F C292             42             CLR P1.2
+                      43             
+8131 80D3             44             SJMP LIGHT
+                      45             
+                      46             END
+                                     
+                                     
+                                     
+A51 MACRO ASSEMBLER  TRAFFIC_LIGHT                                                        08/03/2015 14:38:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ADV_GR . . . . . .  C ADDR   8127H   A   
+CONT . . . . . . .  C ADDR   8204H   A   
+DELAY_R. . . . . .  C ADDR   8202H   A   
+DELAY_RTN. . . . .  C ADDR   8200H   A   
+GOA. . . . . . . .  C ADDR   812BH   A   
+GOG. . . . . . . .  C ADDR   8121H   A   
+GOR. . . . . . . .  C ADDR   810DH   A   
+GOY. . . . . . . .  C ADDR   8117H   A   
+GREEN. . . . . . .  C ADDR   811DH   A   
+HERE . . . . . . .  C ADDR   820CH   A   
+LIGHT. . . . . . .  C ADDR   8106H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+RED. . . . . . . .  C ADDR   8109H   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+YELLOW . . . . . .  C ADDR   8113H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

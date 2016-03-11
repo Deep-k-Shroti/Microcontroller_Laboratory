@@ -1,0 +1,98 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/28/2015  16:16:49  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Adc.obj TO ADC
+
+
+INPUT MODULES INCLUDED:
+  Adc.obj (ADC)
+
+
+LINK MAP OF MODULE:  ADC (ADC)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     8157H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  ADC (ADC)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ADC
+  C:814FH         SYMBOL        AGAIN3
+  C:8147H         SYMBOL        DELAY
+  C:812CH         SYMBOL        JMP1
+  C:8137H         SYMBOL        JMP2
+  C:813EH         SYMBOL        JMP3
+  C:811CH         SYMBOL        L1
+  C:810FH         SYMBOL        L2
+  B:0088H.7       SYMBOL        TF1
+  D:008DH         SYMBOL        TH1
+  D:008BH         SYMBOL        TL1
+  D:0089H         SYMBOL        TMOD
+  B:0088H.6       SYMBOL        TR1
+  C:8100H         LINE#         5
+  C:8103H         LINE#         7
+  C:8106H         LINE#         8
+  C:8108H         LINE#         9
+  C:8109H         LINE#         11
+  C:810CH         LINE#         12
+  C:810EH         LINE#         13
+  C:810FH         LINE#         15
+  C:8112H         LINE#         16
+  C:8114H         LINE#         17
+  C:8115H         LINE#         19
+  C:8118H         LINE#         20
+  C:8119H         LINE#         21
+  C:811BH         LINE#         22
+  C:811CH         LINE#         25
+  C:811FH         LINE#         26
+  C:8120H         LINE#         27
+  C:8122H         LINE#         28
+BL51 BANKED LINKER/LOCATER V6.22                                                      09/28/2015  16:16:49  PAGE 2
+
+
+  C:8124H         LINE#         35
+  C:8127H         LINE#         36
+  C:8128H         LINE#         37
+  C:8129H         LINE#         39
+  C:812CH         LINE#         40
+  C:812EH         LINE#         41
+  C:8131H         LINE#         42
+  C:8132H         LINE#         43
+  C:8134H         LINE#         44
+  C:8135H         LINE#         45
+  C:8137H         LINE#         47
+  C:813AH         LINE#         48
+  C:813BH         LINE#         49
+  C:813DH         LINE#         50
+  C:813EH         LINE#         52
+  C:8141H         LINE#         53
+  C:8142H         LINE#         54
+  C:8143H         LINE#         56
+  C:8145H         LINE#         57
+  C:8147H         LINE#         59
+  C:814AH         LINE#         60
+  C:814DH         LINE#         61
+  C:814FH         LINE#         62
+  C:8152H         LINE#         63
+  C:8154H         LINE#         64
+  C:8156H         LINE#         65
+  -------         ENDMOD        ADC
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0057H BYTE ( 4%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=33111
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

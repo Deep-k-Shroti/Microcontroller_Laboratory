@@ -1,0 +1,55 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        10/26/2015  14:26:34  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE UART.obj TO UART
+
+
+INPUT MODULES INCLUDED:
+  UART.obj (UART)
+
+
+LINK MAP OF MODULE:  UART (UART)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     8116H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  UART (UART)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        UART
+  C:810BH         SYMBOL        HERE
+  B:0098H.0       SYMBOL        RI
+  D:0099H         SYMBOL        SBUF
+  D:0098H         SYMBOL        SCON
+  D:008DH         SYMBOL        TH1
+  D:0089H         SYMBOL        TMOD
+  B:0088H.6       SYMBOL        TR1
+  C:8100H         LINE#         2
+  C:8103H         LINE#         3
+  C:8106H         LINE#         4
+  C:8109H         LINE#         5
+  C:810BH         LINE#         6
+  C:810EH         LINE#         7
+  C:8110H         LINE#         8
+  C:8113H         LINE#         9
+  C:8114H         LINE#         10
+  -------         ENDMOD        UART
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0016H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=33046
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

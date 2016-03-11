@@ -1,0 +1,333 @@
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN Calendar.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE Calendar.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0004                 1     TIME_REAPEAT EQU 4
+8300                   2             ORG 8300H
+8300 1F1C1F1E          3             DB 31,28,31,30,31,30,31,31,30,31,30,31 ;storing the number of days in a different m
+                             onths
+8304 1F1E1F1F                
+8308 1E1F1E1F                
+8400                   4             ORG 8400H
+8400 3F065B4F          5             DB 3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH ;storing corresponding values for displa
+                             ying digits 0-9 in 7 segment LED
+8404 666D7D07                
+8408 7F6F                    
+FFF0                   6             ORG 0FFF0H
+FFF0 028189            7             LJMP TIMER0 ;timer0 interrupt
+8100                   8             ORG 8100H ;main program starts here
+8100 909000            9             MOV DPTR,#9000H ;storing initial time as 23:55:00 and initial date as 31/12/2011
+8103 7417             10             MOV A,#23 ;For Hours
+8105 F0               11             MOVX @DPTR,A ;Copied Hours to external Memory
+8106 A3               12             INC DPTR ;Increment in External Memory
+8107 743B             13             MOV A,#59 ;For Minutes
+8109 F0               14             MOVX @DPTR,A ;Copied Minutes to external Memory
+810A A3               15             INC DPTR ;Increment in External Memory
+810B 7428             16             MOV A,#40 ; for Seconds
+810D F0               17             MOVX @DPTR,A ;Copied Seconds to external Memory
+810E A3               18             INC DPTR ;Increment in External Memory
+810F 741F             19             MOV A,#31 ;For date
+8111 F0               20             MOVX @DPTR,A ;Copied Dates to external Memory
+8112 A3               21             INC DPTR ;Increment in External Memory
+                      22     
+8113 740C             23             MOV A,#12 ;For Months
+8115 F0               24             MOVX @DPTR,A ;Copied Months to external Memory
+8116 A3               25             INC DPTR ;Increment in External Memory
+8117 740B             26             MOV A,#11 ; For Years
+8119 F0               27             MOVX @DPTR,A ;Copied Years to external Memory
+811A 90E803           28             MOV DPTR,#0E803H
+811D 7485             29             MOV A,#85H      ; setting PORTA and B of 8255 as output and PORTC as input
+811F F0               30             MOVX @DPTR,A
+8120 758901           31             MOV TMOD,#00000001B ;we will use timer0 in mode 1
+8123 758ADC           32             MOV TL0,#0DCH ;TL0=0DCH ,THE LOW BYTE
+8126 758C0B           33             MOV TH0,#0BH ;TL0=0BH ,THE HIGH BYTE
+8129 C28D             34             CLR TF0 ;Clear Time
+812B 75A882           35             MOV IE,#82H ;we will use timer interrupt 0
+812E D28C             36             SETB TR0 ;starting timer
+8130                  37             LOOP_1:
+8130 909000           38             MOV DPTR,#9000H ;Move external Memory to 9000H
+8133 E0               39             MOVX A,@DPTR ;Reading hours
+8134 75F00A           40             MOV B,#0AH ;Register B=10 in decimal
+8137 84               41             DIV AB ;dividing by 10 to get the 2 digits
+8138 F530             42             MOV 30H,A ;storing 10's digit of seconds
+813A 85F031           43             MOV 31H,B ;storing unit's digit of seconds
+813D A3               44             INC DPTR ;Increment in External Memory
+                      45     
+                      46     
+813E E0               47             MOVX A,@DPTR ;doing same for minutes, seconds, days, months and years...
+813F 75F00A           48     MOV B,#0AH ;Register B=10 in decimal
+8142 84               49     DIV AB ;Divide A by B for Units & Ten’s Digit
+8143 F532             50     MOV 32H,A ;storing 10's digit of Minutes
+8145 85F033           51     MOV 33H,B ;storing unit's digit of Minutes
+8148 A3               52     INC DPTR ;Increment in External Memory
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     2
+
+8149 E0               53     MOVX A,@DPTR ;Assign Accumulator by External Memory data
+814A 75F00A           54     MOV B,#0AH ;Register B=10 in decimal
+814D 84               55     DIV AB ;Divide A by B for Units & Ten’s Digit
+814E F534             56     MOV 34H,A ;storing 10's digit of Hours
+8150 85F035           57     MOV 35H,B ;storing unit's digit of Hours
+8153 909003           58     MOV DPTR,#9003H ;Move DPTR to 9003H
+8156 E0               59     MOVX A,@DPTR ;Assign Accumulator by External Memory data
+8157 75F00A           60     MOV B,#0AH ;Register B=10 in decimal
+815A 84               61     DIV AB ;Divide A by B for Units & Ten’s Digit
+815B F536             62     MOV 36H,A ;storing 10's digit of Days
+815D 85F037           63     MOV 37H,B ;storing unit's digit of Days
+8160 A3               64     INC DPTR ;Increase in External Memory Address
+8161 E0               65     MOVX A,@DPTR ;Assign Accumulator by External Memory data
+8162 75F00A           66     MOV B,#0AH ;Register B=10 in decimal
+8165 84               67     DIV AB ;Divide A by B for Units & Ten’s Digit
+8166 F538             68     MOV 38H,A ;storing 10's digit of Months
+8168 85F039           69     MOV 39H,B ;storing unit's digit of Months
+816B A3               70     INC DPTR ;Increase in External Memory Address
+816C E0               71     MOVX A,@DPTR ;Assign Accumulator by External Memory data
+816D 75F00A           72     MOV B,#0AH ;Register B=10 in decimal
+8170 84               73     DIV AB ;Divide A by B for Units & Ten’s Digit
+8171 F53A             74     MOV 3AH,A ;storing 10's digit of Years
+8173 85F03B           75     MOV 3BH,B ;storing unit's digit of Years
+                      76     
+                      77     
+8176 90E802           78     MOV DPTR,#0E802H ;
+8179 E0               79     MOVX A,@DPTR ;
+817A 909010           80     MOV DPTR,#9010H ;
+817D F0               81     MOVX @DPTR,A
+817E 20E304           82     JB ACC.3,LOOP_2 ;Mode change for Display of Date or Time
+8181 5103             83     ACALL DISPLAY_TIME ;calling function to display date
+8183 80AB             84     SJMP LOOP_1 ;Calling the LOOP_1
+8185 5170             85     LOOP_2:ACALL DISPLAY_DATE ;calling function to display time
+8187 80A7             86     SJMP LOOP_1 ;Calling the LOOP_1
+8189                  87     TIMER0: ;routine to handle timer0 interrupt
+8189 C28C             88     CLR TR0 ;stopping timer0
+818B C082             89     PUSH 82H ;saving registers to stack
+818D C083             90     PUSH 83H ;saving registers to stack
+818F C0E0             91     PUSH 0E0H ;saving registers to stack
+8191 C001             92     PUSH 01H ;saving registers to stack
+8193 C002             93     PUSH 02H ;saving registers to stack
+8195 C003             94     PUSH 03H ;saving registers to stack
+8197 A904             95     MOV R1,TIME_REAPEAT
+8199 09               96     INC R1 ;INCREMENT
+819A B9104F           97     CJNE R1,#16,LOOP_4;if 1s is not over, go to LOOP_4, else...
+819D 7900             98     MOV R1,#0
+819F 750400           99     MOV TIME_REAPEAT,#0 ;
+81A2 909002          100     MOV DPTR,#9002H ;reading seconds
+81A5 E0              101     MOVX A,@DPTR ;Copy External Memory data to Accumulator
+81A6 04              102     INC A ;Incrementing seconds
+81A7 B43C41          103     CJNE A,#60,LOOP_3;if 60s is not over, go to LOOP_3, else...
+81AA E4              104     CLR A ;setting seconds as 0
+81AB F0              105     MOVX @DPTR,A ;Copy External Memory data to Accumulator
+81AC 909001          106     MOV DPTR,#9001H
+81AF E0              107     MOVX A,@DPTR ;Copy External Memory data to Accumulator
+81B0 04              108     INC A ;incrementing minutes
+81B1 B43C37          109     CJNE A,#60,LOOP_3 ;if 60mins is not over, go to LOOP_3, else...
+81B4 E4              110     CLR A ;Set minutes as 0
+81B5 F0              111     MOVX @DPTR,A ;Copy External Memory data to Accumulator
+81B6 909000          112     MOV DPTR, #9000H
+81B9 E0              113     MOVX A,@DPTR ;reading hours
+81BA 04              114     INC A ;incrementing hours
+81BB B4182D          115     CJNE A,#24,LOOP_3 ;if 24hrs is not over, go to LOOP_3, else...
+81BE E4              116     CLR A
+81BF F0              117     MOVX @DPTR,A ;set hours as 0
+81C0 909003          118     MOV DPTR,#9003H ;read day
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     3
+
+81C3 E0              119     MOVX A,@DPTR ;Copy External Memory data to Accumulator
+81C4 04              120     INC A ;incrementing days
+81C5 FA              121     MOV R2,A
+81C6 A3              122     INC DPTR ;Increment in External Memory Address
+81C7 E0              123     MOVX A,@DPTR ;reading months
+81C8 9082FF          124     MOV DPTR,#82FFH
+81CB 93              125     MOVC A,@A+DPTR ;reading the number of valid days of that month
+81CC 04              126     INC A ;1 day more than the number of valid days would be invalid
+81CD 909003          127     MOV DPTR,#9003H ;Move External Memory to 9003H
+81D0 850203          128     MOV 3,2
+81D3 F502            129     MOV 2,A
+81D5 E503            130     MOV A,3
+81D7 B50211          131     CJNE A,2,LOOP_3 ;if number of days is not equal to the one more than the number of valid da
+                             ys for that month, go to LOOP_3, else...
+81DA 7401            132     MOV A,#01
+81DC F0              133     MOVX @DPTR,A ;setting days as 1
+81DD 909004          134     MOV DPTR,#9004H ;reading month
+81E0 E0              135     MOVX A,@DPTR
+81E1 04              136     INC A ;incrementing month
+81E2 B40D06          137     CJNE A,#13,LOOP_3 ;if months not equal to 13, which is invalid, go to LOOP_3
+81E5 7401            138     MOV A,#01
+81E7 F0              139     MOVX @DPTR,A ;setting months as 1
+81E8 A3              140     INC DPTR
+81E9 E0              141     MOVX A,@DPTR ;reading year
+                     142     
+                     143     
+81EA 04              144     INC A ;incrementing years
+81EB F0              145     LOOP_3:MOVX @DPTR,A ;updating the entity...
+81EC                 146     LOOP_4:
+81EC 8904            147     MOV TIME_REAPEAT,R1 ;updating TIME_REAPEAT
+81EE D003            148     POP 03H ;restoring saved registers from the stack
+81F0 D002            149     POP 02H ;restoring saved registers from the stack
+81F2 D001            150     POP 01H ;restoring saved registers from the stack
+81F4 D0E0            151     POP 0E0H ;restoring saved registers from the stack
+81F6 D083            152     POP 83H ;restoring saved registers from the stack
+81F8 D082            153     POP 82H ;restoring saved registers from the stack
+81FA 758ADC          154     MOV TL0,#0DCH ;TL0=0DCH ,THE LOW BYTE
+81FD 758C0B          155     MOV TH0,#0BH ;TH0=0BH ,THE HIGH BYTE
+8200 D28C            156     SETB TR0 ;starting timer0 again
+8202 32              157     RETI ;returning from interrupt service routine
+8203                 158     DISPLAY_TIME: ;routine to display time in HH:MM:SS format
+8203 90E801          159     MOV DPTR,#0E801H
+8206 74FE            160     MOV A,#11111110B
+8208 F0              161     MOVX @DPTR,A ;only last 7 segment display made active
+8209 908400          162     MOV DPTR,#8400H
+820C E535            163     MOV A,35H ;obtaining the unit's digit of seconds
+820E 93              164     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+820F 90E800          165     MOV DPTR,#0E800H
+8212 F0              166     MOVX @DPTR,A ;writing that value
+8213 51DD            167     ACALL DISP_DELAY ;calling a small delay
+8215 90E801          168     MOV DPTR,#0E801H ;doing the same for all the digits of minutes and hours...
+8218 74FD            169     MOV A,#11111101B
+821A F0              170     MOVX @DPTR,A ;only 7 segment display made active
+821B 908400          171     MOV DPTR,#8400H
+821E E534            172     MOV A,34H ;obtaining the unit's digit of Minutes
+8220 93              173     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+8221 90E800          174     MOV DPTR,#0E800H
+8224 F0              175     MOVX @DPTR,A ;writing that value
+8225 51DD            176     ACALL DISP_DELAY ;calling a small delay
+8227 90E801          177     MOV DPTR,#0E801H
+822A 74FB            178     MOV A,#11111011B
+822C F0              179     MOVX @DPTR,A ;only 7 segment display made active
+822D 908400          180     MOV DPTR,#8400H
+8230 E533            181     MOV A,33H ;obtaining the unit's digit of Hours
+8232 93              182     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+8233 90E800          183     MOV DPTR,#0E800H
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     4
+
+8236 F0              184     MOVX @DPTR,A ;writing that value
+                     185     
+                     186     
+8237 51DD            187     ACALL DISP_DELAY ;calling a small delay
+8239 90E801          188     MOV DPTR,#0E801H
+823C 74F7            189     MOV A,#11110111B ;only 7 segment display made active
+823E F0              190     MOVX @DPTR,A ;Copy data from Accumulator to External Memory
+823F 908400          191     MOV DPTR,#8400H ;Specify External Memory at 8400H
+8242 E532            192     MOV A,32H
+8244 93              193     MOVC A,@A+DPTR ;Copy data to Accumulator from External Memory with Accumulator Sums
+8245 90E800          194     MOV DPTR,#0E800H ;Specify External Memory at E800H
+8248 F0              195     MOVX @DPTR,A ;Copy data from Accumulator to External Memory with Accumulator Sums
+8249 51DD            196     ACALL DISP_DELAY ;Calling Delay
+824B 90E801          197     MOV DPTR,#0E801H ;Specify External Memory at E801H
+824E 74EF            198     MOV A,#11101111B ;only 7 segment display made active
+8250 F0              199     MOVX @DPTR,A ;Copy data from Accumulator to External Memory
+8251 908400          200     MOV DPTR,#8400H ;Specify External Memory at 8400H
+8254 E531            201     MOV A,31H
+8256 93              202     MOVC A,@A+DPTR ;Copy data from Accumulator to External Memory with Accumulator Sums
+8257 90E800          203     MOV DPTR,#0E800H
+825A F0              204     MOVX @DPTR,A ;Copy data from Accumulator to External Memory
+825B 51DD            205     ACALL DISP_DELAY ;Calling Delay
+825D 90E801          206     MOV DPTR,#0E801H
+8260 74DF            207     MOV A,#11011111B ;only 7 segment display made active
+8262 F0              208     MOVX @DPTR,A ;Copy data from Accumulator to External Memory
+8263 908400          209     MOV DPTR,#8400H ;Specify External Memory at 8400H
+8266 E530            210     MOV A,30H
+8268 93              211     MOVC A,@A+DPTR ;Copy data from Accumulator to External Memory with Accumulator Sums
+8269 90E800          212     MOV DPTR,#0E800H ;Specify External Memory at E800H
+826C F0              213     MOVX @DPTR,A ;Copy data from Accumulator to External Memory
+826D 51DD            214     ACALL DISP_DELAY ;Calling Delay
+826F 22              215     RET
+8270                 216     DISPLAY_DATE:
+                     217     ;routine to display the date in DD:MM:YY format, in the same way as time
+8270 90E801          218     MOV DPTR,#0E801H
+8273 74FE            219     MOV A,#11111110B
+8275 F0              220     MOVX @DPTR,A ;only last 7 segment display made active
+8276 908400          221     MOV DPTR,#8400H
+8279 E53B            222     MOV A,3BH ;obtaining the unit's digit of Days
+827B 93              223     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+827C 90E800          224     MOV DPTR,#0E800H
+827F F0              225     MOVX @DPTR,A ;writing that value
+8280 51DD            226     ACALL DISP_DELAY ;calling a small delay
+8282 90E801          227     MOV DPTR,#0E801H
+8285 74FD            228     MOV A,#11111101B ;only last 7 segment display made active
+8287 F0              229     MOVX @DPTR,A
+8288 908400          230     MOV DPTR,#8400H
+828B E53A            231     MOV A,3AH ;obtaining the unit's digit of Months
+828D 93              232     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+828E 90E800          233     MOV DPTR,#0E800H
+8291 F0              234     MOVX @DPTR,A ;writing that value
+8292 51DD            235     ACALL DISP_DELAY ;calling a small delay
+8294 90E801          236     MOV DPTR,#0E801H
+8297 74FB            237     MOV A,#11111011B ;only last 7 segment display made active
+8299 F0              238     MOVX @DPTR,A
+829A 908400          239     MOV DPTR,#8400H
+829D E539            240     MOV A,39H ;obtaining the unit's digit of Years
+829F 93              241     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+82A0 90E800          242     MOV DPTR,#0E800H
+82A3 F0              243     MOVX @DPTR,A ;writing that value
+82A4 51DD            244     ACALL DISP_DELAY ;calling a small delay
+82A6 90E801          245     MOV DPTR,#0E801H
+82A9 74F7            246     MOV A,#11110111B
+82AB F0              247     MOVX @DPTR,A
+82AC 908400          248     MOV DPTR,#8400H
+82AF E538            249     MOV A,38H
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     5
+
+82B1 93              250     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+82B2 90E800          251     MOV DPTR,#0E800H
+82B5 F0              252     MOVX @DPTR,A
+82B6 51DD            253     ACALL DISP_DELAY ;calling a small delay
+82B8 90E801          254     MOV DPTR,#0E801H
+82BB 74EF            255     MOV A,#11101111B
+82BD F0              256     MOVX @DPTR,A
+82BE 908400          257     MOV DPTR,#8400H
+82C1 E537            258     MOV A,37H
+82C3 93              259     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+82C4 90E800          260     MOV DPTR,#0E800H
+82C7 F0              261     MOVX @DPTR,A
+82C8 51DD            262     ACALL DISP_DELAY ;calling a small delay
+82CA 90E801          263     MOV DPTR,#0E801H
+82CD 74DF            264     MOV A,#11011111B
+82CF F0              265     MOVX @DPTR,A
+82D0 908400          266     MOV DPTR,#8400H
+82D3 E536            267     MOV A,36H
+82D5 93              268     MOVC A,@A+DPTR ;obtaining the value to be written to 8255 to display that digit
+82D6 90E800          269     MOV DPTR,#0E800H
+82D9 F0              270     MOVX @DPTR,A
+82DA 51DD            271     ACALL DISP_DELAY
+82DC 22              272     RET
+82DD                 273     DISP_DELAY:
+82DD 7F64            274     MOV R7,#100 ;delay OF 100 cycles...
+82DF DFFE            275     RPT:DJNZ R7,RPT ;Decrease the Value of R7 by 1 ,Decrement and Jump if Not Zero
+82E1 22              276     RET
+                     277     END ;End of Program
+A51 MACRO ASSEMBLER  CALENDAR                                                             08/31/2015 14:24:49 PAGE     6
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+B. . . . . . . . .  D ADDR   00F0H   A   
+DISPLAY_DATE . . .  C ADDR   8270H   A   
+DISPLAY_TIME . . .  C ADDR   8203H   A   
+DISP_DELAY . . . .  C ADDR   82DDH   A   
+IE . . . . . . . .  D ADDR   00A8H   A   
+LOOP_1 . . . . . .  C ADDR   8130H   A   
+LOOP_2 . . . . . .  C ADDR   8185H   A   
+LOOP_3 . . . . . .  C ADDR   81EBH   A   
+LOOP_4 . . . . . .  C ADDR   81ECH   A   
+RPT. . . . . . . .  C ADDR   82DFH   A   
+TF0. . . . . . . .  B ADDR   0088H.5 A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TIMER0 . . . . . .  C ADDR   8189H   A   
+TIME_REAPEAT . . .  N NUMB   0004H   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,73 @@
+A51 MACRO ASSEMBLER  STARTUP                                                              07/27/2015 14:14:20 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN STARTUP.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE STARTUP.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     
+8100                   3             ORG 8100H
+8100 7E64              4             MOV R6,#100
+8102 7B00              5             MOV R3,#00
+8104 7A00              6             MOV R2,#00
+8106 909000            7             MOV DPTR,#9000H
+8109 7401              8             MOV A, #01
+810B 7F0A              9             MOV R7, #10
+810D F0               10     VAL:MOVX @DPTR, A
+810E 04               11             INC A
+810F A3               12             INC DPTR
+8110 DFFB             13             DJNZ R7, VAL 
+8112 909000           14             MOV DPTR,#9000H
+                      15             
+8115                  16     TOP:
+8115 E0               17             MOVX A,@DPTR
+8116 B50300           18             CJNE A,3,SECH
+8119                  19     SECH:
+8119 500A             20             JNC UPDH
+811B B50200           21             CJNE A,2,THDH
+811E                  22     THDH:
+811E 500C             23             JNC UPDS
+8120                  24     FIN:
+8120 A3               25             INC DPTR
+8121 DEF2             26             DJNZ R6,TOP
+8123 800B             27             SJMP RES
+8125                  28     UPDH:
+                      29     
+8125 850302           30             MOV 2,3
+8128 F503             31             MOV 3,A
+812A 80F4             32             SJMP FIN
+812C                  33     UPDS:
+812C F502             34             MOV 2,A
+812E 80F0             35             SJMP FIN
+8130                  36     RES:
+8130 909500           37             MOV DPTR,#9500H
+8133 EA               38             MOV A,R2
+8134 F0               39             MOVX @DPTR,A
+8135 80FE             40     HERE:SJMP HERE
+                      41             END
+A51 MACRO ASSEMBLER  STARTUP                                                              07/27/2015 14:14:20 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+FIN. . . . . . . .  C ADDR   8120H   A   
+HERE . . . . . . .  C ADDR   8135H   A   
+RES. . . . . . . .  C ADDR   8130H   A   
+SECH . . . . . . .  C ADDR   8119H   A   
+THDH . . . . . . .  C ADDR   811EH   A   
+TOP. . . . . . . .  C ADDR   8115H   A   
+UPDH . . . . . . .  C ADDR   8125H   A   
+UPDS . . . . . . .  C ADDR   812CH   A   
+VAL. . . . . . . .  C ADDR   810DH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

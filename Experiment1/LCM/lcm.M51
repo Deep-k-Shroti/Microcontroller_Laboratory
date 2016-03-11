@@ -1,0 +1,71 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/27/2015  14:25:31  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE lcm.obj TO lcm
+
+
+INPUT MODULES INCLUDED:
+  lcm.obj (LCM)
+
+
+LINK MAP OF MODULE:  lcm (LCM)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     8127H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  lcm (LCM)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        LCM
+  D:00F0H         SYMBOL        B
+  C:8125H         SYMBOL        HERE
+  C:8114H         SYMBOL        REP
+  C:8100H         LINE#         2
+  C:8103H         LINE#         3
+  C:8105H         LINE#         4
+  C:8107H         LINE#         5
+  C:8108H         LINE#         6
+  C:8109H         LINE#         7
+  C:810AH         LINE#         8
+  C:810BH         LINE#         9
+  C:810DH         LINE#         10
+  C:810EH         LINE#         11
+  C:810FH         LINE#         12
+  C:8110H         LINE#         13
+  C:8112H         LINE#         14
+  C:8114H         LINE#         15
+  C:8115H         LINE#         16
+  C:8117H         LINE#         17
+  C:8118H         LINE#         18
+  C:8119H         LINE#         19
+  C:811AH         LINE#         20
+  C:811CH         LINE#         21
+  C:811DH         LINE#         22
+  C:811FH         LINE#         23
+  C:8122H         LINE#         25
+  C:8123H         LINE#         26
+  C:8124H         LINE#         27
+  C:8125H         LINE#         29
+  -------         ENDMOD        LCM
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/27/2015  14:25:31  PAGE 2
+
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0027H BYTE ( 1%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=33063
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,51 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        09/07/2015  15:31:30  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE DAC.obj TO DAC
+
+
+INPUT MODULES INCLUDED:
+  DAC.obj (DAC)
+
+
+LINK MAP OF MODULE:  DAC (DAC)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     8229H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  DAC (DAC)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DAC
+  C:8100H         SYMBOL        AGAIN
+  C:8105H         SYMBOL        BACK
+  D:0090H         SYMBOL        P1
+  C:8200H         SYMBOL        TABLE
+  C:8100H         LINE#         2
+  C:8103H         LINE#         3
+  C:8105H         LINE#         4
+  C:8106H         LINE#         5
+  C:8107H         LINE#         6
+  C:8109H         LINE#         7
+  C:810AH         LINE#         8
+  C:810CH         LINE#         9
+  -------         ENDMOD        DAC
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0037H BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=33321
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

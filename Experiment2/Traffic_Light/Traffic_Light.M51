@@ -1,0 +1,96 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        08/03/2015  14:38:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE Traffic_Light.obj TO Traffic_Light
+
+
+INPUT MODULES INCLUDED:
+  Traffic_Light.obj (TRAFFIC_LIGHT)
+
+
+LINK MAP OF MODULE:  Traffic_Light (TRAFFIC_LIGHT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     8218H     ABSOLUTE     
+
+
+
+SYMBOL TABLE OF MODULE:  Traffic_Light (TRAFFIC_LIGHT)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        TRAFFIC_LIGHT
+  C:8127H         SYMBOL        ADV_GR
+  C:8204H         SYMBOL        CONT
+  C:8202H         SYMBOL        DELAY_R
+  C:8200H         SYMBOL        DELAY_RTN
+  C:812BH         SYMBOL        GOA
+  C:8121H         SYMBOL        GOG
+  C:810DH         SYMBOL        GOR
+  C:8117H         SYMBOL        GOY
+  C:811DH         SYMBOL        GREEN
+  C:820CH         SYMBOL        HERE
+  C:8106H         SYMBOL        LIGHT
+  D:0090H         SYMBOL        P1
+  C:8109H         SYMBOL        RED
+  B:0088H.5       SYMBOL        TF0
+  D:008CH         SYMBOL        TH0
+  D:008AH         SYMBOL        TL0
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:8113H         SYMBOL        YELLOW
+  C:8200H         LINE#         3
+  C:8202H         LINE#         4
+  C:8204H         LINE#         5
+  C:8207H         LINE#         6
+  C:820AH         LINE#         7
+  C:820CH         LINE#         8
+  C:820FH         LINE#         9
+  C:8211H         LINE#         10
+  C:8213H         LINE#         11
+  C:8215H         LINE#         12
+  C:8217H         LINE#         13
+BL51 BANKED LINKER/LOCATER V6.22                                                      08/03/2015  14:38:10  PAGE 2
+
+
+  C:8100H         LINE#         16
+  C:8103H         LINE#         17
+  C:8106H         LINE#         18
+  C:8109H         LINE#         20
+  C:810BH         LINE#         21
+  C:810DH         LINE#         22
+  C:810FH         LINE#         23
+  C:8111H         LINE#         24
+  C:8113H         LINE#         26
+  C:8115H         LINE#         27
+  C:8117H         LINE#         28
+  C:8119H         LINE#         29
+  C:811BH         LINE#         30
+  C:811DH         LINE#         32
+  C:811FH         LINE#         33
+  C:8121H         LINE#         34
+  C:8123H         LINE#         35
+  C:8125H         LINE#         36
+  C:8127H         LINE#         38
+  C:8129H         LINE#         39
+  C:812BH         LINE#         40
+  C:812DH         LINE#         41
+  C:812FH         LINE#         42
+  C:8131H         LINE#         44
+  -------         ENDMOD        TRAFFIC_LIGHT
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 004BH BYTE ( 3%) *
+******************************************************************************
+
+Program Size: data=8.0 xdata=0 code=33304
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

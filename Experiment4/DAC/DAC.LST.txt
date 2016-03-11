@@ -1,0 +1,55 @@
+A51 MACRO ASSEMBLER  DAC                                                                  09/07/2015 15:31:30 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN DAC.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE DAC.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1     ORG 8100H
+8100 908200            2     AGAIN: MOV DPTR,#TABLE
+8103 7A29              3             MOV R2,#41
+8105 E4                4     BACK: CLR A
+8106 93                5             MOVC A,@A+DPTR
+8107 F590              6             MOV P1,A
+8109 A3                7             INC DPTR
+810A DAF9              8             DJNZ R2,BACK
+810C 80F2              9             SJMP AGAIN
+8200                  10             ORG 8200H
+                      11             
+                      12     ;TABLE: DB 128,139,150,161,171,182,191,201,210,218,226,232,238,243,248,251,254,255,255,255,
+                             254,251,248,244,238,232,226,218,210,201,192,182,171,161,150,139,128,117,105,95,84,74,64,54,
+                             45,37,30,23,17,12,7,4,1,0,0,0,1,4,7,11,16,22,29,37,45,54,63,73,83,94,105,116,127105,116,127
+                      13     ;TABLE: DB 128,192,238,255,238,192,128,64,17,0,17,64,128
+8200 00030609         14     TABLE: DB 0,3,6,9,12,15,18,21,24,27,30,33,36,39,42,45,48,51,54,57,60,57,54,51,48,45,42,39,3
+                             6,33,30,27,24,21,18,15,12,9,6,3,0
+8204 0C0F1215                
+8208 181B1E21                
+820C 24272A2D                
+8210 30333639                
+8214 3C393633                
+8218 302D2A27                
+821C 24211E1B                
+8220 1815120F                
+8224 0C090603                
+8228 00                      
+                      15     END
+A51 MACRO ASSEMBLER  DAC                                                                  09/07/2015 15:31:30 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN. . . . . . .  C ADDR   8100H   A   
+BACK . . . . . . .  C ADDR   8105H   A   
+P1 . . . . . . . .  D ADDR   0090H   A   
+TABLE. . . . . . .  C ADDR   8200H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

@@ -1,0 +1,140 @@
+A51 MACRO ASSEMBLER  LCD                                                                  10/26/2015 15:05:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.02b
+OBJECT MODULE PLACED IN LCD.OBJ
+ASSEMBLER INVOKED BY: C:\Keil\C51\BIN\A51.EXE LCD.A51 SET(SMALL) DEBUG EP
+
+LOC  OBJ            LINE     SOURCE
+
+8100                   1     ORG 8100H
+                       2        
+8100 758910            3         MOV TMOD,#10H
+                       4        
+                       5        
+8103 7480              6         MOV A,#80H
+8105 90E803            7         MOV DPTR,#0E803H
+8108 F0                8         MOVX @DPTR,A
+                       9        
+8109 90E801           10         MOV DPTR,#0E801H
+810C 7400             11         MOV A,#00H
+810E F0               12         MOVX @DPTR,A
+                      13        
+810F 7838             14         MOV R0,#38H          
+8111 3143             15         ACALL CMD
+8113 780F             16         MOV R0,#0FH
+8115 3143             17         ACALL CMD
+8117 7801             18         MOV R0,#01H
+8119 3143             19         ACALL CMD
+                      20        
+811B 7900             21         MOV R1,#0
+811D E9               22     L2:    MOV A,R1
+811E 908300           23         MOV DPTR,#8300H
+8121 93               24         MOVC A,@A+DPTR
+8122 F8               25         MOV R0,A
+8123 3154             26         ACALL DISP
+8125 09               27         INC R1
+8126 B90DF4           28         CJNE R1,#0DH,L2
+                      29        
+8129 78C0             30         MOV R0,#0C0H
+812B 3143             31         ACALL CMD   
+                      32        
+812D 7900             33         MOV R1,#0
+812F E9               34     L3:    MOV A,R1
+8130 908320           35         MOV DPTR,#8320H
+8133 93               36         MOVC A,@A+DPTR
+8134 F8               37         MOV R0,A
+8135 3154             38         ACALL DISP
+8137 09               39         INC R1
+8138 B90CF4           40         CJNE R1,#0CH,L3
+                      41        
+813B 7818             42     L1:    MOV R0,#18H
+813D 3143             43         ACALL CMD
+813F 3175             44         ACALL BIG
+8141 80F8             45         SJMP L1
+                      46     
+8143 90E800           47     CMD: MOV DPTR,#0E800H
+8146 E8               48         MOV A,R0
+8147 F0               49         MOVX @DPTR,A
+8148 90E801           50         MOV DPTR,#0E801H
+814B 7404             51         MOV A,#04H
+814D F0               52         MOVX @DPTR,A
+814E 7400             53         MOV A,#00H
+8150 F0               54         MOVX @DPTR,A
+8151 3165             55         ACALL DELAY
+8153 22               56         RET
+                      57     
+8154 90E800           58     DISP:MOV DPTR,#0E800H
+A51 MACRO ASSEMBLER  LCD                                                                  10/26/2015 15:05:18 PAGE     2
+
+8157 E8               59         MOV A,R0
+8158 F0               60         MOVX @DPTR,A
+8159 90E801           61         MOV DPTR,#0E801H
+815C 7405             62         MOV A,#05H
+815E F0               63         MOVX @DPTR,A
+815F 7401             64         MOV A,#01H
+8161 F0               65         MOVX @DPTR,A
+8162 3165             66         ACALL DELAY
+8164 22               67         RET
+                      68        
+8165 758DF0           69     DELAY:    MOV TH1,#0F0H             
+8168 758B00           70             MOV TL1,#00H
+816B D28E             71             SETB TR1
+816D 308FFD           72     AGAIN3:    JNB TF1,AGAIN3
+8170 C28E             73             CLR TR1
+8172 C28F             74             CLR TF1
+8174 22               75             RET
+                      76            
+8175 7D03             77     BIG:    MOV R5,#3D
+8177 758D00           78     TEMP:    MOV TH1,#00H             
+817A 758B00           79             MOV TL1,#00H
+817D D28E             80             SETB TR1
+817F 308FFD           81     AGAIN2:    JNB TF1,AGAIN2
+8182 C28E             82             CLR TR1
+8184 C28F             83             CLR TF1
+8186 DDEF             84             DJNZ R5, TEMP
+8188 22               85             RET       
+                      86     
+8300                  87     ORG 8300H
+8300 56454420         88         DB "VED 12EC10061"
+8304 31324543                
+8308 31303036                
+830C 31                      
+8320                  89     ORG 8320H
+8320 44323239         90         DB "D229 RP HALL"
+8324 20525020                
+8328 48414C4C                
+                      91     
+                      92            
+                      93        
+                      94            
+                      95             END
+A51 MACRO ASSEMBLER  LCD                                                                  10/26/2015 15:05:18 PAGE     3
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+AGAIN2 . . . . . .  C ADDR   817FH   A   
+AGAIN3 . . . . . .  C ADDR   816DH   A   
+BIG. . . . . . . .  C ADDR   8175H   A   
+CMD. . . . . . . .  C ADDR   8143H   A   
+DELAY. . . . . . .  C ADDR   8165H   A   
+DISP . . . . . . .  C ADDR   8154H   A   
+L1 . . . . . . . .  C ADDR   813BH   A   
+L2 . . . . . . . .  C ADDR   811DH   A   
+L3 . . . . . . . .  C ADDR   812FH   A   
+TEMP . . . . . . .  C ADDR   8177H   A   
+TF1. . . . . . . .  B ADDR   0088H.7 A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TL1. . . . . . . .  D ADDR   008BH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

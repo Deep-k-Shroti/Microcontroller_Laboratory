@@ -72,14 +72,14 @@ Each Experiment directory includes the experiment source codes(.A51).  <br />
 
 	![alt tag](https://cloud.githubusercontent.com/assets/12825395/13695231/a368415c-e782-11e5-8524-9b203071bb44.png)
 
-6. Stepper motor interfacing.__ <br />
+6. Stepper motor interfacing. <br />
 	__Statement of the experiment:__ Interface a stepper motor with the micro-controller. The system will have two switches. Initially, the motor is at zero speed. With every press of the first switch, the speed will
  	increase by a fixed amount. After eight such presses, it returns to zero speed. The other switch will toggle the direction of rotation of the motor. <br />
 
-7. Serial communication between kits.__ <br />
+7. Serial communication between kits <br />
 	__Statement of the experiment:__ Interface two kits using UART interface of 8051.Experiment: LCD display interfacing <br />
 
-8. LCD display interfacing__ <br />
+8. LCD display interfacing <br />
     __Statement of the experiment:__ Interface an LCD display with the micro-controller through 8255 port (J3). Display your name and Roll no. in the 1 st line and Hall address in the 2 nd line. Make it a scrolling display. <br />
 
 ##Setup
